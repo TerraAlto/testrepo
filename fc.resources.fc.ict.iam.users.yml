@@ -1,0 +1,31 @@
+Description: "FC Resources FC ICT IAM Users"
+
+# Parameters can be assigned a default value, but if not then the value
+# needs to be provided when uploading the CloudFormation.
+# If uploading via CLI then you'll provide a --parameters flag
+# If uploading via the AWS console, a GUI will be provided
+Parameters:
+  TrustedSource:
+    Description: "TrustedIPRange"
+    Type: "String"
+    Default: "185.46.212.0/23"
+
+Resources:
+
+  codecommitfcdebrubc01:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "-codecommit-fc-debrub01"
+      Groups: 
+        - "codecommitntwkmgtdev"
+        - "codecommitntwkconfigbackup"                           
+      Path: "/FCNtwkMgt/"
+
+
+  codecommitfclibrenms01:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: "-codecommit-svc-librenms01"
+      Groups: 
+        - "codecommitntwkconfigbackup"      
+      Path: "/FCNtwkMgt/"
